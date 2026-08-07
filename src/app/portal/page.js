@@ -6,6 +6,7 @@ const providerLabels = {
   github: "GitHub",
   google: "Google",
   "microsoft-entra-id": "Microsoft",
+  email: "Email",
 };
 
 export default async function PortalPage() {

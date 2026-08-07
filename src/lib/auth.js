@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import AzureADProvider from "next-auth/providers/azure-ad";
 import CredentialsProvider from "next-auth/providers/credentials";
+import EmailProvider from "next-auth/providers/email";
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 
@@ -20,6 +21,10 @@ if (
   process.env.AUTH_MICROSOFT_ENTRA_TENANT_ID
 ) {
   configuredAuthProviders.push("microsoft-entra-id");
+}
+
+if (process.env.AUTH_EMAIL_SERVER && process.env.AUTH_EMAIL_FROM) {
+  configuredAuthProviders.push("email");
 }
 
 const providers = [
@@ -45,6 +50,14 @@ const providers = [
           clientId: process.env.AUTH_MICROSOFT_ENTRA_ID,
           clientSecret: process.env.AUTH_MICROSOFT_ENTRA_SECRET,
           tenantId: process.env.AUTH_MICROSOFT_ENTRA_TENANT_ID,
+        }),
+      ]
+    : []),
+  ...(configuredAuthProviders.includes("email")
+    ? [
+        EmailProvider({
+          server: process.env.AUTH_EMAIL_SERVER,
+          from: process.env.AUTH_EMAIL_FROM,
         }),
       ]
     : []),

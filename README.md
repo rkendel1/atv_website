@@ -17,6 +17,7 @@ The portal uses Auth.js (`next-auth`) with runtime provider configuration:
 - GitHub (`AUTH_GITHUB_ID`, `AUTH_GITHUB_SECRET`)
 - Google (`AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET`)
 - Microsoft Entra ID (`AUTH_MICROSOFT_ENTRA_ID`, `AUTH_MICROSOFT_ENTRA_SECRET`, `AUTH_MICROSOFT_ENTRA_TENANT_ID`)
+- Email magic link (`AUTH_EMAIL_SERVER`, `AUTH_EMAIL_FROM`)
 - Development credentials (`DEV_AUTH_EMAIL`, `DEV_AUTH_PASSWORD`)
 
 Set `NEXTAUTH_URL` and `NEXTAUTH_SECRET` for all environments.
