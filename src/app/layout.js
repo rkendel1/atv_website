@@ -1,21 +1,20 @@
 import Link from "next/link";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 import "./globals.css";
 
 const navLinks = [
-  ["Product", "/product"],
-  ["Platform", "/platform"],
-  ["Solutions", "/solutions"],
-  ["Pricing", "/pricing"],
-  ["Developers", "/developers"],
-  ["Docs", "/docs"],
-  ["Blog", "/blog"],
-  ["Customers", "/customers"],
-  ["Security", "/security"],
-  ["Open Source", "/open-source"],
-  ["Install", "/install"],
-  ["Portal", "/portal"],
-  ["About", "/about"],
-  ["Contact", "/contact"],
+  ["Home", "/#hero"],
+  ["Product", "/#product"],
+  ["Platform", "/#platform"],
+  ["Solutions", "/#solutions"],
+  ["Pricing", "/#pricing"],
+  ["Developers", "/#developers"],
+  ["Security", "/#security"],
+  ["Docs", "/#documentation"],
+  ["Install", "/#install"],
+  ["Open Source", "/#open-source"],
+  ["Contact", "/#contact"],
 ];
 
 export const metadata = {
@@ -23,12 +22,14 @@ export const metadata = {
   description: "Trust Every Agent. Expose No Secrets.",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await getServerSession(authOptions);
+
   return (
-    <html lang="en" className="h-full antialiased">
+    <html lang="en" className="h-full antialiased scroll-smooth">
       <body className="min-h-full bg-slate-50 text-slate-950">
         <div className="flex min-h-full flex-col">
-          <header className="border-b border-slate-200 bg-black text-white">
+          <header className="border-b border-slate-200 bg-black text-white sticky top-0 z-50">
             <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-6 py-4">
               <Link href="/" className="text-lg font-semibold tracking-tight">
                 ATV · Agent Trust Vault
@@ -39,6 +40,11 @@ export default function RootLayout({ children }) {
                     {label}
                   </Link>
                 ))}
+                {session?.user && (
+                  <Link href="/portal" className="hover:text-emerald-300 font-medium">
+                    Portal
+                  </Link>
+                )}
               </nav>
             </div>
           </header>
