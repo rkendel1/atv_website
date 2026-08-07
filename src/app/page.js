@@ -243,9 +243,9 @@ const customersSections = [
   },
 ];
 
-function SectionRenderer({ title, subtitle, sections }) {
+function SectionRenderer({ id, title, subtitle, sections }) {
   return (
-    <section className="mt-16 scroll-mt-20">
+    <section id={id} className="mt-16 scroll-mt-20">
       <h2 className="text-3xl font-bold tracking-tight">{title}</h2>
       {subtitle && <p className="mt-2 max-w-3xl text-slate-700">{subtitle}</p>}
       <div className="mt-8 grid gap-6 md:grid-cols-2">
@@ -338,66 +338,77 @@ export default function Home() {
       </section>
 
       <SectionRenderer
+        id="product"
         title="Product"
         subtitle="Agent Trust Vault secures governed artifacts, credentials, and documents for humans and AI agents across workflows."
         sections={productSections}
       />
 
       <SectionRenderer
+        id="platform"
         title="Platform"
         subtitle="Interactive trust architecture for secure AI collaboration."
         sections={platformSections}
       />
 
       <SectionRenderer
+        id="solutions"
         title="Solutions"
         subtitle="Deploy ATV across personal, team, and enterprise AI workflows."
         sections={solutionsSections}
       />
 
       <SectionRenderer
+        id="pricing"
         title="Pricing"
         subtitle="Community and commercial plans with Stripe-backed subscriptions, invoices, and seat management."
         sections={pricingSections}
       />
 
       <SectionRenderer
+        id="developers"
         title="Developers"
         subtitle="Build secure agentic systems with the Agent Trust Vault SDK and platform APIs."
         sections={developersSections}
       />
 
       <SectionRenderer
+        id="security"
         title="Security"
         subtitle="ATV enforces high-trust controls and telemetry with zero secret collection."
         sections={securitySections}
       />
 
       <SectionRenderer
+        id="about"
         title="About"
         subtitle="Agent Trust Vault is building the trust layer for AI collaboration."
         sections={aboutSections}
       />
 
       <SectionRenderer
+        id="install"
         title="Install"
         subtitle="Install ATV into your preferred AI environment with copyable command, verification, and health checks."
         sections={installSections}
       />
 
       <SectionRenderer
+        id="open-source"
         title="Open Source"
         subtitle="Core and SDK remain open while hosted enterprise features are commercial."
         sections={openSourceSections}
       />
 
       <SectionRenderer
+        id="documentation"
         title="Documentation"
         subtitle="Documentation hub for onboarding, integrations, and enterprise deployment."
         sections={docsSections}
       />
 
       <SectionRenderer
+        id="blog"
         title="Blog"
         subtitle="Product updates, security write-ups, and agent trust engineering notes."
         sections={[
@@ -409,6 +420,7 @@ export default function Home() {
       />
 
       <SectionRenderer
+        id="customers"
         title="Customers"
         subtitle="Customer onboarding and management foundation for secure expansion."
         sections={customersSections}
